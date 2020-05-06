@@ -1,0 +1,262 @@
+/* fallback */
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+div {
+    margin: 5px;
+    padding: 5px;
+}
+
+.modal-overlay {
+    margin: 0;
+}
+
+/* ===================buttons box style=================== */
+
+/* ========================================================= */
+
+#buttonsBox {
+    max-width: 1200px;
+    display: flex;
+    margin: auto;
+    font-weight: bold;
+}
+
+/* ===================first 3 places style=================== */
+
+/* ========================================================= */
+
+#firstPlacesMainTable {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    max-width: 1200px;
+}
+
+#firstPlacesTitles {
+    color: #26a69a;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.place-title {
+    padding-left: 2%;
+}
+
+#first3Places {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+}
+
+.places-main {
+    box-shadow: -4px 8px 6px -6px grey;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.place-name {
+    text-transform: capitalize;
+    color: #26a69a;
+    font-weight: 500;
+}
+
+#placeTitleLost {
+    margin: auto;
+    padding-left: 4%;
+}
+
+.place-lost {
+    color: #333;
+}
+
+/* ===================rest of the places style=================== */
+
+/* ============================================================= */
+
+#restOfPlaces {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+}
+
+#restPlacesTable {
+    padding: 0px;
+    margin: 0px;
+}
+
+#numCell1, #numCell2, #numCell3 {
+    /* border: 1px solid grey; */
+    width: 20px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#firstPlacesTitles {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.place-title {
+    width: 25%;
+    text-align: center;
+}
+
+.places-data {
+    width: 25%;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* ===================weekly places style=================== */
+
+/* ========================================================= */
+
+#weeklyWeightTable {
+    /* border: 1px solid green; */
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+}
+
+.week-card {
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    margin-left: 15px !important;
+    margin: 8px;
+    width: 205px;
+    font-size: 18px;
+    line-height: 1.1;
+    margin-left: 0px;
+    box-shadow: -3px 7px 6px -6px grey;
+    border-bottom-left-radius: 5px;
+    height: fit-content;
+}
+
+.week-card div {
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    margin-left: 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+.week-date {
+    display: block;
+    color: #26a69a;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: underline;
+}
+
+.in-week-data {
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+}
+
+.in-week-data-left {
+    float: left;
+    margin-top: 7px;
+    width: 70px;
+    text-align: left;
+    text-transform: capitalize;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.in-week-data-center {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 7px;
+    width: 45px;
+}
+
+.in-week-data-right {
+    float: right;
+    padding-right: 0px !important;
+    margin-top: 7px;
+    width: 70px;
+    text-align: center;
+}
+
+/* ===================new person modal style=================== */
+
+/* =========================================================== */
+
+#newPersonModal {
+    overflow-x: hidden;
+    width: 500px;
+    height: 340px;
+}
+
+#newPersonModal .row {
+    margin-bottom: 0px !important;
+}
+
+/* ===================new weight data modal style ===================*/
+
+/* ================================================================= */
+
+#innerWeightPanel input {
+    margin-bottom: 0px !important;
+}
+
+#newWeightModal {
+    max-width: 600px;
+}
+
+#newWeightModal .row {
+    margin-bottom: 0px !important;
+}
+
+.weight-item {
+    display: flex;
+    justify-content: center;
+}
+
+.input-weight-name {
+    color: #000 !important;
+    font-size: 18px !important;
+    text-transform: capitalize;
+    border-bottom: 2px solid #4CAF50 !important;
+}
+
+.input-person-label, .input-weight-label {
+    color: #26a69a !important;
+}
+
+.empty-field-border {
+    border-bottom: 1px solid red !important;
+    transition: all 0.3s;
+}
+
+.empty-field-text {
+    color: red !important;
+    transition: all 0.3s;
+}

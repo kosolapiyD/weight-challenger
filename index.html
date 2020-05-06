@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Management</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="buttonsBox">
+            <div>
+                <!-- new person modal button -->
+                <a id="newPersonBtn" class="waves-effect waves-light btn modal-trigger" href="#newPersonModal">add
+                    person</a>
+                <a id="newWeightBtn" class="waves-effect waves-light btn modal-trigger" href="#newWeightModal">add
+                    weight</a>
+            </div>
+        </div>
+        <!-- first places table -->
+        <div id="firstPlacesMainTable">
+            <div id="first3Places">
+
+            </div>
+            <!-- rest of the places tables -->
+            <div id="restOfPlaces">
+
+            </div>
+
+        </div>
+        <!-- <div id="currentWeightTable">
+
+        </div> -->
+        <div id="weeklyWeightTable">
+
+        </div>
+
+        <div id="newPersonForm">
+            <!-- new person modal body -->
+            <div id="newPersonModal" class="modal">
+                <div class="modal-content">
+                    <!-- <h4></h4> -->
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="input_name_val" type="text" class="input-person">
+                                    <label for="icon_prefix" class="input-person">ENTER YOUR NAME</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">fitness_center</i>
+                                    <input id="input_weight_val" type="number" class="validate input-person">
+                                    <label for="icon_fitness_center" class="input-person">AND YOUR WEIGHT</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <!-- save in modal btn -->
+                                    <a id="savePersonBtn" class="waves-effect waves-light btn">save</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- close modal button -->
+                <!-- <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                </div> -->
+            </div>
+        </div>
+        <div id="addWeightForm">
+            <!-- new weight modal body -->
+            <div id="newWeightModal" class="modal">
+                <div class="modal-content">
+                    <!-- <h4></h4> -->
+                    <div class="row">
+                        <form class="col s12">
+                            <div id="innerWeightPanel" class="row">
+
+                            </div>
+                            <div class="input-field col s12">
+                                <!-- save in modal btn -->
+                                <a id="saveWeightDataBtn" class="waves-effect waves-light btn">save</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+    <script src="js/lodash.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
