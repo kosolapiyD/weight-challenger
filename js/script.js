@@ -1,12 +1,9 @@
 $(document).ready(function () {
-    console.log("readt");
-
     // person modal init
     $('#newPersonModal').modal({
         // callback for modal close
         complete: function () {
             // reset all the inputs
-            console.log("closed");
             inputPerson.val('');
             inputPerson.trigger('blur');
             removeAlertClasses();
@@ -17,14 +14,38 @@ $(document).ready(function () {
         // callback for modal close
         complete: function () {
             // reset all the inputs
-            console.log("closed");
             $('#innerWeightPanel').html('');
         }
     });
-    // here the onSuccessHandler as callback function 
-    // happens only when we got all data from ajax
-    // getAllData(onSuccessHandler);
     loadEventListeners();
+});
+
+let allDataGlobalArray = [];
+let namesGlobalArray = [];
+
+var firebaseConfig = {
+    apiKey: "AIzaSyAUCO7Szf4XvqjoT5Bvk2eITeR0BpYejQk",
+    authDomain: "weight-challenger-app.firebaseapp.com",
+    databaseURL: "https://weight-challenger-app.firebaseio.com",
+    projectId: "weight-challenger-app",
+    storageBucket: "weight-challenger-app.appspot.com",
+    messagingSenderId: "240302590167",
+    appId: "1:240302590167:web:ce9422f67cdf650a3c0892",
+    measurementId: "G-6CHFHXLQF6",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+const weightRef = firebase.database().ref('weights');
+weightRef.on("value", function (snapshot) {
+    if (snapshot.exists()) {
+        onSuccessHandler(snapshot.val())
+    } else {
+        console.log("no data");
+    }
+}, function (errorObject) {
+    onErrorHandler(errorObject);
 });
 
 const newWeightBtn = $('#newWeightBtn');
@@ -45,48 +66,17 @@ function loadEventListeners() {
     $(saveWeightDataBtn).on('click', saveNewWeights);
 }
 
-// reset data on page
-function removeOnPageData() {
-    $('#first3Places').html('');
-    $('#restPlacesTable').html('');
-    $('#weeklyWeightTable').html('');
-}
-
-function getAllData(callback) {
-    const url = "data.json";
-    $.ajax({
-        url: url,
-        type: "GET",
-        dataType: "json",
-        headers: {
-            "accept": "application/json;odata=verbose"
-        },
-        error: onErrorHandler
-    }).then(function (data) {
-        //  the callback is passed as a argument in this function
-        callback(data);
-    });
-};
-
 function onSuccessHandler(data) {
-    console.log('data ==> ', data);
     // copy the array with spread operator
     allDataGlobalArray = [...data]
-    console.log('allDataGlobalArray ==> ', allDataGlobalArray);
     sortDataForMainPlaces(data);
+    $('#weeklyWeightTable').html('');
     sortDataForWeeks(data);
 }
 
-function onErrorHandler(errMessage) {
-    console.log('ajax errMessage ==> ', errMessage);
-}
-
-let allDataGlobalArray = [];
-function resetWithUpdatedData(updatedData) {
-    removeOnPageData();
-    sortDataForMainPlaces(updatedData);
-    sortDataForWeeks(updatedData);
-    console.log("allDataGlobalArray", allDataGlobalArray);
+function onErrorHandler(errorObject) {
+    console.log("Firebase read failed: " + errorObject.code);
+    $('#container').append('<h1>Firebase read failed</h1>');
 }
 
 let forMainPlacesDataArr = [];
@@ -142,7 +132,7 @@ function buildMainPlacesTable(data) {
         let elementToAppend = key < 3 ? '#first3Places' : '#restPlacesTable'
         $(elementToAppend).append(placeItem);
     })
-    sessionStorage.setItem('names', JSON.stringify(namesArr));
+    namesGlobalArray = [...namesArr];
 }
 
 let lastDate;
@@ -188,8 +178,7 @@ function builWeeklyWeightTable(groupedByWeekData, weeksCounter, ) {
 function saveNewPersonData() {
     const name = $(input_name_val).val();
     const weight = $(input_weight_val).val();
-    const names = JSON.parse(sessionStorage.getItem('names'));
-    const nameExist = names.includes(name.toLowerCase());
+    const nameExist = namesGlobalArray.includes(name.toLowerCase());
     if (name === "" || weight === "") {
         if (name === "") {
             addAlertClasses('name');
@@ -209,11 +198,10 @@ function saveNewPersonData() {
                 "created": ""
             }
             allDataGlobalArray.push(person);
-            // sharepoint post
-            resetWithUpdatedData(allDataGlobalArray);
             $('#newPersonModal').modal('close');
         }
     }
+    saveToFirebase(allDataGlobalArray);
 }
 
 function removeAlertClasses() {
@@ -284,9 +272,8 @@ function saveNewWeights() {
                 "created": currentDate
             }
             allDataGlobalArray.push(newWeights);
-            // sharepoint post
         });
-        resetWithUpdatedData(allDataGlobalArray);
+        saveToFirebase(allDataGlobalArray);
         $('#newWeightModal').modal('close');
     }
 }
@@ -295,4 +282,8 @@ function saveNewWeights() {
 function removeAlertClassesFromWeightModal() {
     $(this).removeClass('empty-field-border');
     $(this).next().removeClass('empty-field-text');
+}
+
+function saveToFirebase(data) {
+    weightRef.set(data);
 }
